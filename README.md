@@ -1,4 +1,4 @@
-# openmp-binary-search-tree
+# Binary Search Parallelization with OpenMP
 Binary Search implemented in C using OpenMP Parallelization
 
 
