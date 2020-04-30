@@ -1,24 +1,4 @@
 /*
-    int i;
-    int parallel_arr_size = input_arr/num_threads; // Get input from user for num_threads
-
-# pragma omp parallel for
-    for(i = 0; i < parallel_arr_size; i++) {
-        int parallel_start = i * parallel_arr_size;
-        int parallel_end = parallel_arr_size - 1;
-
-        // binarySearch(int start, int end, int search_val)
-        binarySearch(parallel_start, parallel_end, search_val);
-
-    }
-
-    if (search == search_val) {
-        // trigger flag to let all threads know
-    }
-
-*/
-
-/*
 
 gcc -Wall -o binarySearch_openMP binarySearch_openMP.c
 ./binarySearch_openMP
@@ -177,17 +157,12 @@ void serial_work(int searchVal) {
 
     start = omp_get_wtime();
     // Perform serial Binary search with timing
-    // gettimeofday(&start, NULL);
     result = binarySearch_serial(searchVal); // Binary search here
-    // gettimeofday(&end, NULL);
 
     end = omp_get_wtime();
     total_time = end - start;
 
     printf("Work took %f seconds\n", total_time);
-
-    // printf("Time taken: %ld microseconds\n", ((end.tv_sec * 1000000 + end.tv_usec)
-	// 	  - (start.tv_sec * 1000000 + start.tv_usec)));
 
 
     // Print results of serial Binary search
@@ -229,9 +204,6 @@ void parallel_work(int searchVal, int num_threads) {
 
     printf("Starting binary search...\n");
 
-    // Perform serial Binary search with timing
-    // gettimeofday(&start, NULL);
-
      start = omp_get_wtime();
 #pragma omp parallel num_threads(num_threads)
     {
@@ -250,27 +222,10 @@ void parallel_work(int searchVal, int num_threads) {
         }
     }
 
-    // start = omp_get_wtime();
-// #pragma omp parallel num_threads(num_threads)
-//     {
-
-//         // thread_one = binarySearch_openmp(0, quarter_slice, searchVal);
-//         // thread_two = binarySearch_openmp(quarter_slice + 1, middle, searchVal);
-//         // thread_three = binarySearch_openmp(middle + 1, quarter_slice * 3, searchVal);
-//         // thread_four = binarySearch_openmp((quarter_slice * 3) + 1, last, searchVal);
-
-//         result = binarySearch_openmp(first, last, searchVal); // Binary Search
-//     }
-
     end = omp_get_wtime();
     total_time = end - start;
 
     printf("Work took %f seconds\n", total_time);
-
-    // gettimeofday(&end, NULL);
-
-    // printf("Time taken: %ld microseconds\n", ((end.tv_sec * 1000000 + end.tv_usec)
-	// 	  - (start.tv_sec * 1000000 + start.tv_usec)));
 
 
     // // Print results of serial Binary search
