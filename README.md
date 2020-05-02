@@ -1,5 +1,5 @@
-# Binary Search Parallelization with OpenMP
-Binary Search implemented in C using OpenMP Parallelization
+# Parallel Binary Search with OpenMP
+Binary Search implemented in C using OpenMP
 
 
 How to run program:
